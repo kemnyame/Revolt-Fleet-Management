@@ -73,3 +73,6 @@ Railway variables:
 - `NODE_ENV=production`
 
 Keep the Railway persistent volume mounted at `/data`.
+
+## Live Tracking Upgrade
+This build includes bidirectional vehicle/map selection, selected-vehicle focus, simulated GPS movement trails, heading-aware vehicle markers, follow-vehicle mode, GPS history, geofence overlays, last-known positions, and continuous telemetry simulation. Simulated telemetry is clearly labelled in the UI and can later be replaced by physical tracker ingestion without redesigning the tracking interface.
