@@ -1,0 +1,58 @@
+# Revolt Corporate Fleet Management
+
+Deployment-ready Node.js fleet-management application for Railway. The application includes the web UI, backend REST API, populated fleet data, SQLite persistence, GPS ingestion/history endpoints, and a health check.
+
+## Railway deployment
+
+1. Push the contents of this folder to a GitHub repository.
+2. In Railway, create a **New Project > Deploy from GitHub Repo** and select the repository.
+3. Add a **Volume** to the web service and mount it at `/data`.
+4. In **Variables**, add:
+   - `DATABASE_PATH=/data/revolt-fleet.db`
+   - `NODE_ENV=production`
+   - `ADMIN_EMAIL=<your admin email>`
+   - `ADMIN_PASSWORD=<a strong password>`
+5. Do not set `PORT`; Railway supplies it automatically.
+6. Deploy. `railway.json` supplies `npm start` and the `/api/health` health check.
+7. In **Networking**, generate a public domain or attach your custom domain.
+
+On the first start with an empty volume, the application automatically creates and populates the database with demonstration fleet data.
+
+## Local run
+
+Requires Node.js 22+.
+
+```bash
+npm start
+```
+
+Open `http://localhost:3000`.
+
+## GPS API
+
+Health check:
+
+`GET /api/health`
+
+GPS ingestion:
+
+`POST /api/gps/ingest`
+
+Example JSON body:
+
+```json
+{
+  "tracker_id": "GPS-1000",
+  "lat": 5.6037,
+  "lng": -0.1870,
+  "speed": 42
+}
+```
+
+GPS history:
+
+`GET /api/gps/history?vehicle=RVT-102`
+
+## Important production note
+
+This package is deployment-ready for a hosted pilot/demo. Before storing sensitive real corporate fleet data, add production authentication/MFA, strict multi-tenant authorization, secret management, object storage, backups, and migrate high-volume telematics workloads to PostgreSQL or a dedicated telemetry store.
