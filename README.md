@@ -62,3 +62,14 @@ This package includes the refreshed Revolt Fleet Intelligence interface: brighte
 
 ## QA status
 Validated locally: JavaScript syntax, Node server startup, health endpoint, bootstrap data, resource GET endpoints, vehicle/driver/fuel/incident creation, GPS ingestion and GPS history. Some demonstration-only controls remain intentionally non-persistent: geofence drawing, generic trip/maintenance/document/user forms, report generation, alert acknowledgement and settings save. These require the next workflow/API implementation layer before production customer use.
+
+## Full functional build update
+This release adds database-backed CRUD for vehicles, drivers, trips, maintenance, fuel, incidents, documents, users and geofences; persistent alerts and settings; secure password hashing and token sessions; tenant-scoped data; audit logs; GPS history; and a live GPS simulator that moves connected demo vehicles around their current Accra coordinates. The simulator is for demonstrations and testing. It is not a substitute for physical tracker telemetry.
+
+Railway variables:
+- `DATABASE_PATH=/data/revolt-fleet.db`
+- `ADMIN_EMAIL=your-admin-email`
+- `ADMIN_PASSWORD=your-strong-password`
+- `NODE_ENV=production`
+
+Keep the Railway persistent volume mounted at `/data`.
