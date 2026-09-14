@@ -56,3 +56,9 @@ GPS history:
 ## Important production note
 
 This package is deployment-ready for a hosted pilot/demo. Before storing sensitive real corporate fleet data, add production authentication/MFA, strict multi-tenant authorization, secret management, object storage, backups, and migrate high-volume telematics workloads to PostgreSQL or a dedicated telemetry store.
+
+## UI Refresh - September 2026
+This package includes the refreshed Revolt Fleet Intelligence interface: brighter corporate command-centre styling, vivid gradient page headers, redesigned navigation, KPI cards, tables, forms, modal windows and responsive mobile layouts. Existing API/database behaviour is retained.
+
+## QA status
+Validated locally: JavaScript syntax, Node server startup, health endpoint, bootstrap data, resource GET endpoints, vehicle/driver/fuel/incident creation, GPS ingestion and GPS history. Some demonstration-only controls remain intentionally non-persistent: geofence drawing, generic trip/maintenance/document/user forms, report generation, alert acknowledgement and settings save. These require the next workflow/API implementation layer before production customer use.
